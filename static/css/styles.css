@@ -794,3 +794,47 @@ body.light-theme .hero-text p{
 .nav-btn.next {
     right: 40px;
 }
+/* MOBILE NAVIGATION FIX */
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 20px;
+}
+
+.mobile-menu a {
+    padding: 10px 0;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+/* Hide full navbar on mobile */
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .navbar {
+        padding: 10px 16px;
+    }
+}

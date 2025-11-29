@@ -53,3 +53,16 @@ function prevImage(event) {
     currentIndex = (currentIndex - 1 + modalImages.length) % modalImages.length;
     document.getElementById("modalImg").src = modalImages[currentIndex];
 }
+// Mobile Menu Toggle
+const navToggle = document.getElementById("nav-toggle");
+const mobileMenu = document.getElementById("mobile-menu");
+
+if (navToggle) {
+    navToggle.addEventListener("click", () => {
+        if (mobileMenu.style.display === "flex") {
+            mobileMenu.style.display = "none";
+        } else {
+            mobileMenu.style.display = "flex";
+        }
+    });
+}
