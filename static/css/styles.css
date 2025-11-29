@@ -931,3 +931,21 @@ body.light-theme .hero-text p{
         display: none !important;
     }
 }
+/* HIDE BLUR ORBS ON MOBILE */
+@media (max-width: 800px) {
+    .orb,
+    .orb-main,
+    .orb-secondary,
+    .orb-tertiary {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+
+    .hero-visual {
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
