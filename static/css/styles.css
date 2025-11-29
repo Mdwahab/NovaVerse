@@ -750,3 +750,59 @@ body.light-theme .hero-text p{
 .nav-btn.next {
     right: 40px;
 }
+/* ------------------------------  
+   MOBILE FIXES  
+------------------------------*/
+@media (max-width: 768px) {
+
+    /* Hero section to stack cleanly */
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 20px 10px;
+    }
+
+    .hero-text {
+        order: 2;
+    }
+
+    .hero-visual {
+        order: 1;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    /* Fix floating buttons */
+    .hero-actions-side {
+        position: static !important;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hero-actions-side .btn {
+        width: 80%;
+        max-width: 280px;
+    }
+
+    /* Social links stack neatly */
+    .social-links {
+        justify-content: center;
+    }
+
+    /* Make orbs smaller */
+    .orb-main {
+        width: 150px;
+        height: 150px;
+    }
+    .orb-secondary {
+        width: 100px;
+        height: 100px;
+    }
+    .orb-tertiary {
+        width: 120px;
+        height: 120px;
+    }
+}

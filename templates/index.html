@@ -4,55 +4,70 @@
 
 {% block content %}
 <section class="hero">
+
+    <!-- LEFT SIDE TEXT -->
     <div class="hero-text">
         <p class="eyebrow">Welcome to</p>
         <h1>NovaVerse</h1>
         <h2>I'm Mohammad Abdul Wahab</h2>
-        <p class="hero-subtitle">
+
+        <!-- FIXED: Replaced invalid <p><p> nesting with a wrapper div -->
+        <div class="hero-subtitle">
+
             <p>
                 A passionate developer with a strong interest in 
                 <strong>full-stack development</strong>.  
                 I love turning ideas into real, functional solutions and enjoy building digital experiences 
                 that are clean, modern, and meaningful.
-            </p><br>
+            </p>
 
             <p>
                 I completed my <strong>BE in Computer Science and Engineering (2021–2025)</strong> at 
                 C.Abdul Hakeem College of Engineering & Technology with a <strong>75% score</strong>.  
                 I’ve worked with technologies like <strong>Java, C, Python, Flask, SQL, HTML, CSS, 
                 JavaScript</strong>, and I am always exploring new tools and frameworks.
-            </p><br>
+            </p>
 
             <p>
                 NovaVerse is my personal digital space — a place where I showcase my skills, projects, and 
                 learning journey. Everything you see here reflects my growth as a developer, my creativity, 
                 and my commitment to writing clean, quality code.
-            </p><br>
+            </p>
 
             <p>
                 Apart from coding, I enjoy <strong>cricket, video editing, design, and music</strong>.  
                 I believe learning is continuous, and every day is an opportunity to grow.
-            </p><br>
-        </p>
-        <div class="hero-actions-side">
+            </p>
+
+        </div>
+
+        <!-- FIXED BUTTON LAYOUT -->
+        <div class="hero-actions">
             <a href="{{ url_for('projects') }}" class="btn primary">Explore Projects</a>
             <a href="{{ url_for('resume') }}" class="btn primary">View Resume</a>
             <a href="{{ url_for('about') }}" class="btn ghost">About Me</a>
         </div>
+
         <p class="hero-note">Built with Flask, SQLite, HTML, CSS, and JavaScript.</p>
     </div>
+
+    <!-- RIGHT SIDE VISUAL -->
     <div class="hero-visual">
         <div class="orb orb-main"></div>
         <div class="orb orb-secondary"></div>
         <div class="orb orb-tertiary"></div>
+
         <div class="hero-card">
             <h3>Currently Exploring</h3>
             <p>Full-stack development, UI/UX, and creative coding experiments.</p>
         </div>
     </div>
+
+    <!-- SOCIAL BUTTONS -->
     <div class="social-links">
         <a href="https://github.com/MrAbdulOfficial" class="btn primary" target="_blank">GitHub</a>
         <a href="mailto:md.a.wahab55@gmail.com" class="btn ghost">Email</a>
     </div>
+
 </section>
 {% endblock %}
