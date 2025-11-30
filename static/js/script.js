@@ -1,44 +1,66 @@
-// ================================
-// THEME TOGGLE (FIXED)
-// ================================
-const themeToggleBtn = document.getElementById("theme-toggle");
+// =====================
+// THEME TOGGLE (Desktop + Mobile)
+// =====================
+
 const body = document.body;
+const desktopBtn = document.getElementById("theme-toggle");
+const mobileBtn = document.getElementById("theme-toggle-mobile");
 
 // Load saved theme
 const savedTheme = localStorage.getItem("novaverse-theme");
 
 if (savedTheme === "dark") {
     body.classList.add("dark-theme");
-    themeToggleBtn.textContent = "☀ Light";
+    setButtonsToDark();
 } else {
-    themeToggleBtn.textContent = "☾ Dark";
+    body.classList.add("light-theme");
+    setButtonsToLight();
 }
 
-themeToggleBtn.addEventListener("click", () => {
+// Main toggle function
+function toggleTheme() {
     if (body.classList.contains("dark-theme")) {
-        // Switch to LIGHT mode
+        // Switch to light
         body.classList.remove("dark-theme");
-        themeToggleBtn.textContent = "☾ Dark";
+        body.classList.add("light-theme");
         localStorage.setItem("novaverse-theme", "light");
+        setButtonsToLight();
     } else {
-        // Switch to DARK mode
+        // Switch to dark
+        body.classList.remove("light-theme");
         body.classList.add("dark-theme");
-        themeToggleBtn.textContent = "☀ Light";
         localStorage.setItem("novaverse-theme", "dark");
+        setButtonsToDark();
     }
-});
+}
+
+// Button label helpers
+function setButtonsToDark() {
+    if (desktopBtn) desktopBtn.textContent = "☀ Light";
+    if (mobileBtn) mobileBtn.textContent = "☀ Light";
+}
+
+function setButtonsToLight() {
+    if (desktopBtn) desktopBtn.textContent = "☾ Dark";
+    if (mobileBtn) mobileBtn.textContent = "☾ Dark";
+}
+
+// Add event listeners
+if (desktopBtn) desktopBtn.addEventListener("click", toggleTheme);
+if (mobileBtn) mobileBtn.addEventListener("click", toggleTheme);
 
 
-// ================================
-// IMAGE MODAL
-// ================================
+// =====================
+// IMAGE MODAL (Your code kept same)
+// =====================
+
 let modalImages = [];
 let currentIndex = 0;
 
 function openModal(src, list = []) {
     modalImages = list;
-    currentIndex = modalImages.indexOf(src);
-
+    currentIndex = modalImages.indexOf(src.replace(window.location.origin + "/", ""));
+    
     document.getElementById("modalImg").src = src;
     document.getElementById("imgModal").classList.add("show");
 }
@@ -60,14 +82,12 @@ function prevImage(event) {
 }
 
 
-// ================================
+// =====================
 // MOBILE MENU
-// ================================
-const navToggle = document.getElementById("nav-toggle");
-const mobileMenu = document.getElementById("mobile-menu");
+// =====================
 
-if (navToggle) {
-    navToggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("show");
-    });
+const menu = document.getElementById("mobileMenu");
+
+function toggleMenu() {
+    menu.classList.toggle("show");
 }
