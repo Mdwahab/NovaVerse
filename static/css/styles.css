@@ -1,6 +1,3 @@
-/* =========================================
-   GLOBAL RESET & ROOT THEME VARIABLES
-========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +16,6 @@
     --success: #27ae60;
 }
 
-/* DARK THEME VARIABLES */
 body.dark-theme {
     --bg: #050509;
     --bg-elevated: #10111a;
@@ -39,11 +35,9 @@ body {
     flex-direction: column;
 }
 
-
-/* =========================================
-   NAVBAR
-========================================= */
-
+/* ------------------------------
+   Navbar
+---------------------------------*/
 .navbar {
     position: sticky;
     top: 0;
@@ -57,12 +51,10 @@ body {
     justify-content: space-between;
 }
 
-/* Dark mode navbar */
 body.dark-theme .navbar {
     background: rgba(8, 8, 16, 0.85);
 }
 
-/* Logo */
 .logo {
     font-weight: 700;
     font-size: 1.4rem;
@@ -71,7 +63,6 @@ body.dark-theme .navbar {
     color: var(--accent);
 }
 
-/* Desktop nav links */
 .nav-links {
     display: flex;
     gap: 20px;
@@ -92,7 +83,7 @@ body.dark-theme .navbar {
     border-color: var(--accent-soft);
 }
 
-/* Desktop theme toggle */
+/* Theme toggle */
 .theme-toggle {
     margin-left: 75px;
     border: none;
@@ -103,67 +94,43 @@ body.dark-theme .navbar {
     font-size: 0.9rem;
     color: #78789a;
 }
-
-/* Theme toggle (dark mode color override) */
 .theme-toggle.dark-theme {
     color: #b4b4b5;
 }
-
-/* MOBILE MENU BUTTON (hidden on desktop) */
-.menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
+/* ------------------------------
+   Flash Messages
+---------------------------------*/
+.flash-container {
+    max-width: 900px;
+    margin: 16px auto 0;
+    padding: 0 20px;
 }
 
-/* MOBILE DROPDOWN MENU */
-.mobile-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    width: 75%;
-    background: var(--bg-elevated);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    z-index: 999;
+.flash {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
 }
 
-.mobile-menu a {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-subtle);
-    font-size: 1.05rem;
-    color: var(--text);
+.flash-error {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.4);
+    color: var(--danger);
 }
 
-/* Mobile theme button */
-.mobile-theme {
-    margin-top: 15px;
-    background: var(--accent-soft);
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    font-size: 1rem;
+.flash-success {
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.4);
+    color: var(--success);
 }
 
-/* Show mobile menu when toggled */
-.mobile-menu.show {
-    display: flex;
+/* ------------------------------
+   Hero Section
+---------------------------------*/
+main {
+    flex: 1;
 }
-
-/* Hide desktop theme button on mobile */
-@media (max-width: 800px) {
-    .desktop-theme {
-        display: none !important;
-    }
-}
-/* =========================================
-   HERO SECTION
-========================================= */
 
 .hero {
     max-width: 1100px;
@@ -188,7 +155,6 @@ body.dark-theme .navbar {
     font-size: clamp(2.4rem, 5vw, 3.1rem);
     margin-bottom: 14px;
 }
-
 .hero-text h2 {
     margin-bottom: 7px;
 }
@@ -201,14 +167,12 @@ body.dark-theme .navbar {
     margin-bottom: 20px;
 }
 
-/* Buttons under hero */
 .hero-actions {
     display: flex;
     gap: 14px;
     margin-bottom: 12px;
 }
 
-/* Buttons */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -217,40 +181,52 @@ body.dark-theme .navbar {
     font-size: 0.9rem;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 
-/* Primary button */
 .btn.primary {
     background: var(--accent);
     color: white;
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
+
 .btn.primary:hover {
     transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
 }
 
-/* Ghost button */
 .btn.ghost {
     background: transparent;
     color: var(--text);
     border-color: rgb(39, 38, 38);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-}
-.btn.ghost:hover {
-    background: var(--accent-soft);
-    border-color: var(--accent);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Small button */
+.btn.ghost:hover {
+    transform: translateY(-1px);
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: var(--accent);
+}
+
 .btn.small {
     padding: 6px 14px;
     font-size: 0.8rem;
     color: blue;
     background-color: rgb(231, 225, 231);
 }
+.dark-theme .btn.small.ghost{
+    color: blue !important;
+    background-color: rgb(24, 24, 24) !important;
+}
 
-/* Hero Visual Orbs */
+.hero-note {
+    font-size: 1rem;
+    color: rgb(45, 45, 45);
+}
+
+/* Hero visual */
 .hero-visual {
     position: relative;
     height: 260px;
@@ -269,6 +245,7 @@ body.dark-theme .navbar {
     top: 30px;
     left: 20px;
     background: radial-gradient(circle, #9b59b6, #3498db);
+    animation: float 8s ease-in-out infinite;
 }
 
 .orb-secondary {
@@ -277,6 +254,7 @@ body.dark-theme .navbar {
     top: 0;
     right: 10px;
     background: radial-gradient(circle, #e67e22, #e74c3c);
+    animation: float 10s ease-in-out infinite;
 }
 
 .orb-tertiary {
@@ -285,34 +263,37 @@ body.dark-theme .navbar {
     bottom: -10px;
     left: 60px;
     background: radial-gradient(circle, #1abc9c, #3498db);
+    animation: float 11s ease-in-out infinite;
 }
 
-/* Hero floating card */
 .hero-card {
     position: absolute;
-    right: 20px;
-    bottom: 10px;
-    max-width: 260px;
+    inset: auto 20px 10px auto;
     padding: 16px 18px;
     border-radius: 16px;
-    background: rgba(255,255,255,0.92);
-    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(16px);
+    max-width: 260px;
+    border: 1px solid var(--border-subtle);
+}
+
+body.dark-theme .hero-card {
+    background: rgba(10, 10, 20, 0.9);
 }
 
 .hero-card h3 {
     font-size: 0.9rem;
+    margin-bottom: 4px;
 }
+
 .hero-card p {
     font-size: 0.83rem;
     color: var(--muted);
 }
 
-
-/* =========================================
-   ABOUT SECTION
-========================================= */
-
+/* ------------------------------
+   Sections
+---------------------------------*/
 .section {
     max-width: 1000px;
     margin: 0 auto;
@@ -323,20 +304,27 @@ body.dark-theme .navbar {
     margin-bottom: 24px;
 }
 
-.section-header h1 {
-    font-size: clamp(2.4rem, 5vw, 3.1rem);
-}
 .section-header h2 {
     font-size: 1.8rem;
+    margin-bottom: 6px;
 }
-.section-header p {
-    color: rgb(45,45,45);
+.section-header h1 {
+    font-size: clamp(2.4rem, 5vw, 3.1rem);
+    margin-bottom: 3px;
 }
 
-/* About Cards Grid */
+.section-header p {
+    color: rgb(45, 45, 45);
+}
+
+/* About */
+.about-section {
+    margin-top: 10px;
+}
+
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
 }
 
@@ -345,66 +333,56 @@ body.dark-theme .navbar {
     border-radius: 18px;
     padding: 16px 18px;
     border: 1px solid var(--border-subtle);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.02);
+    font-size: 0.95rem;
 }
 
 .about-card h3 {
+    font-size: 1rem;
     margin-bottom: 8px;
 }
-.about-card p {
+.about-card p{
     color: var(--muted);
 }
-
-/* Skills Grid */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
-    gap: 12px;
+.dark-theme.about-card p,
+.dark-theme .about-card p{
+    color: #b4b4b5;
 }
 
-.skill-card {
-    background: var(--bg-elevated);
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px solid var(--border-subtle);
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-/* =========================================
-   TIMELINE
-========================================= */
-
-.timeline {
-    border-left: 2px solid var(--border-subtle);
-    padding-left: 20px;
-}
-
-.timeline-item {
-    margin-bottom: 20px;
-}
-
-.timeline-item .year {
-    font-weight: bold;
-    color: var(--accent);
-    margin-bottom: 4px;
-}
-
-/* Social Links */
-.social-links {
-    margin-top: 1px;
+/* Pill list */
+.pill-list {
+    list-style: none;
     display: flex;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
 }
-.social-links a {
-    color: whitesmoke;
+
+.pill-list li {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--muted);
+}
+.light-theme li,
+.light-theme .pill-list li{
+    color: rgb(45, 45, 45);
+}
+
+/* Projects */
+.projects-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.projects-note {
     font-size: 0.9rem;
+    color: rgb(45, 45, 45);
 }
-
-
-/* =========================================
-   PROJECTS
-========================================= */
 
 .projects-grid {
     display: grid;
@@ -417,24 +395,32 @@ body.dark-theme .navbar {
     border-radius: 18px;
     padding: 16px 18px;
     border: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
 }
 
-.project-img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: 0.2s;
+.project-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
 }
-.project-img:hover {
-    transform: scale(1.02);
-}
-/* =========================================
-   FORMS
-========================================= */
 
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+.dark-theme.project-card p,
+.dark-theme .project-card p {
+    color: #b4b4b5;
+}
+.project-link {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--accent);
+}
+
+/* Forms */
 .form-section {
     max-width: 720px;
 }
@@ -465,6 +451,7 @@ body.dark-theme .navbar {
     padding: 9px 10px;
     border: 1px solid var(--border-subtle);
     font-size: 0.9rem;
+    outline: none;
     background: transparent;
     color: var(--text);
 }
@@ -485,191 +472,119 @@ body.dark-theme .navbar {
     font-size: 0.9rem;
 }
 
-
-/* =========================================
-   FOOTER
-========================================= */
-
+/* Footer */
 .footer {
     text-align: center;
     padding: 14px 16px 20px;
     font-size: 0.85rem;
-    color: rgb(45,45,45);
-    background: white;
+    color: rgb(45, 45, 45);
+    background-color: white;
 }
-
-body.dark-theme .footer {
-    background: rgba(8,8,16,0.85);
+.dark-theme.footer,
+.dark-theme .footer {
+    background-color: rgba(8, 8, 16, 0.85);
 }
-body.dark-theme .footer p {
+.dark-theme.footer p,
+.dark-theme .footer p {
     color: white;
 }
-
-
-/* =========================================
-   IMAGE MODAL (Projects Gallery)
-========================================= */
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    padding-top: 80px;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-16px); }
+    100% { transform: translateY(0px); }
 }
 
-.modal-content {
-    display: block;
-    margin: auto;
-    max-width: 70%;
-    border-radius: 14px;
-}
-
-.modal.show {
-    display: block;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    font-size: 40px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.2);
-    padding: 12px 18px;
-    border-radius: 50%;
-    border: none;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    backdrop-filter: blur(8px);
-    z-index: 1001;
-}
-
-.nav-btn:hover {
-    background: rgba(255,255,255,0.35);
-}
-
-.nav-btn.prev { left: 40px; }
-.nav-btn.next { right: 40px; }
-
-
-/* =========================================
-   MOBILE MENU FIXES
-========================================= */
-
-.menu-btn {
-    display: none;
-    font-size: 26px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.mobile-menu {
-    display: none;
-    flex-direction: column;
-    background: var(--bg-elevated);
-    position: absolute;
-    right: 10px;
-    top: 60px;
-    width: 75%;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    z-index: 100;
-}
-
-.mobile-menu a {
-    padding: 12px 0;
-    font-size: 1.05rem;
-    border-bottom: 1px solid var(--border-subtle);
-    color: var(--text);
-}
-
-.mobile-menu.show {
-    display: flex;
-}
-
-.mobile-theme {
-    margin-top: 15px;
-    background: var(--accent-soft);
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-}
-
-
-/* =========================================
-   RESPONSIVE FIXES
-========================================= */
-
-/* Phone Layout */
+/* Responsive */
 @media (max-width: 800px) {
 
-    /* Navbar */
-    .nav-links {
-        display: none !important;
-    }
-
-    .menu-btn {
-        display: block !important;
-    }
-
-    .desktop-theme {
-        display: none !important;
-    }
-
     .navbar {
-        padding: 12px 18px;
+        padding: 12px 20px;
     }
 
-    /* Hero: left aligned on phone */
+    .nav-links {
+        gap: 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Hero section mobile layout */
     .hero {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        text-align: left;
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 24px;
+        padding-top: 20px;
     }
 
-    .hero-text h1,
-    .hero-text h2,
-    .hero-text p {
-        text-align: left !important;
+    /* Move visuals above text on phone */
+    .hero-visual {
+        order: -1;
+        height: 200px;
     }
 
-    /* Hide hero card + orbs */
-    .hero-card,
-    .hero-visual,
-    .orb,
-    .orb-main,
-    .orb-secondary,
-    .orb-tertiary {
-        display: none !important;
+    /* Resize orbs for phone */
+    .orb-main { width: 140px; height: 140px; }
+    .orb-secondary { width: 100px; height: 100px; }
+    .orb-tertiary { width: 120px; height: 120px; }
+
+    /* Mobile titles */
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Subtitle centered */
+    .hero-subtitle {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    /* Card centered */
+    .hero-card {
+        position: relative;
+        margin: 0 auto;
+        bottom: auto;
+        right: auto;
+        max-width: 280px;
+    }
+
+    /* Buttons center */
+    .hero-actions-side {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 }
 
-/* Desktop Hide Mobile Menu Btn */
-@media (min-width: 801px) {
-    .mobile-menu {
-        display: none !important;
-    }
+
+.btn.danger {
+    background: #e74c3c;
+    color: white;
+    border-color: transparent;
 }
-/* =========================================
-   DARK MODE FIXES
-========================================= */
+
+.btn.danger:hover {
+    background: #c0392b;
+}
+
+.project-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+
+/* =====================================
+            DARK MODE 
+===================================== */
 
 body.dark-theme .logo {
-    color: #ffcc80 !important;
+    color: #ffcc80 !important; /* Bright + visible */
 }
 
 body.dark-theme .nav-links a {
@@ -680,41 +595,43 @@ body.dark-theme .nav-links a:hover {
     color: var(--accent) !important;
 }
 
+/* Fix "About Me" ghost button */
 body.dark-theme .btn.ghost {
     color: black !important;
     border-color: rgba(7, 3, 3, 0.5) !important;
-    background: rgba(246,173,3,0.04) !important;
+    background: rgba(246, 173, 3, 0.04) !important;
 }
 
 body.dark-theme .btn.ghost:hover {
-    background: rgba(243,171,2,0.12) !important;
+    background: rgba(243, 171, 2, 0.12) !important;
     border-color: var(--accent) !important;
 }
 
+/* Hero title fix */
 body.dark-theme h1,
-body.dark-theme .hero-text h1,
-body.dark-theme h2,
-body.dark-theme .hero-text h2 {
+body.dark-theme .hero-text h1 {
     color: black !important;
 }
 
+body.dark-theme h2,
+body.dark-theme .hero-text h2 {
+    color: black !important;
+} 
+
 body.light-theme p,
-body.light-theme .hero-text p {
-    color: #343434 !important;
+body.light-theme .hero-text p{
+    color:#343434 !important;
 }
 
-body.dark-theme .hero-card h3 {
-    color: white;
+.hero-card.dark-theme h3{
+    color: rgb(255, 254, 254);
 }
-
-body.dark-theme .hero-card p {
+.dark-theme.hero-card p,
+.dark-theme .hero-card p{
     color: #b4b4b5;
 }
 
-
-/* =========================================
-   SKILLS + TIMELINE
-========================================= */
+/* skills fix */
 
 .skills-grid {
     display: grid;
@@ -743,13 +660,9 @@ body.dark-theme .hero-card p {
 .timeline-item .year {
     font-weight: bold;
     color: var(--accent);
+    display: block;
     margin-bottom: 4px;
 }
-
-
-/* =========================================
-   SOCIAL LINKS
-========================================= */
 
 .social-links {
     margin-top: 1px;
@@ -761,59 +674,12 @@ body.dark-theme .hero-card p {
     color: whitesmoke;
     font-size: 0.9rem;
 }
-
-body.dark-theme p,
-body.dark-theme .year p {
-    color: rgb(45,45,45);
+.dark-theme p,
+.dark-theme .year p{
+    color: rgb(45, 45, 45);
 }
 
-
-/* =========================================
-   PROJECT IMAGES
-========================================= */
-
-.project-img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: 0.2s ease;
-}
-
-.project-img:hover {
-    transform: scale(1.02);
-}
-
-.project-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.gallery-img {
-    width: 100%;
-    max-width: 140px;
-    height: 110px;
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 1.5px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.dark-theme .gallery-img {
-    border-color: rgb(188,188,188);
-}
-
-
-/* =========================================
-   BUTTONS (Final Polish)
-========================================= */
-
+/* Clean + Responsive Button Layout */
 .hero-actions-side {
     margin-top: 20px;
     display: flex;
@@ -826,30 +692,334 @@ body.dark-theme .year p {
     text-align: center;
 }
 
-/* Make buttons closer (your request) */
-.hero-actions-side .btn.primary,
-.hero-actions-side .btn.ghost {
-    margin-bottom: -4px !important;
+.project-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
 }
 
+.project-img:hover {
+    transform: scale(1.02);
+}
 
-/* =========================================
-   FINAL MOBILE SAFETY FIXES
-========================================= */
+/* Popup Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+}
 
-/* Prevent double-menu bug */
-@media (min-width: 801px) {
-    .mobile-menu {
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 70%;
+    border-radius: 14px;
+}
+
+.modal.show {
+    display: block;
+}
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.gallery-img {
+    width: 100%;
+    max-width: 140px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 1.5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.dark-theme.gallery-img,
+.dark-theme .gallery-img {
+    border-radius: 10px;
+    border: 2px solid rgb(188, 187, 187);
+    padding: 1.5px;
+}
+.gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    padding: 12px 18px;
+    color: white;
+    font-size: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001;
+    backdrop-filter: blur(8px);
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+.nav-btn.prev {
+    left: 40px;
+}
+
+.nav-btn.next {
+    right: 40px;
+}
+/* =============================
+   PHONE NAVBAR PERFECT FIX
+============================= */
+
+@media (max-width: 800px) {
+
+    /* Navbar cleaner */
+    .navbar {
+        padding: 12px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .btn.primary {
+        margin-top: 2px;
+    }
+    .btn.ghost {
+        margin-top: 2px;
+    }
+
+    /* Hide desktop menu */
+    .nav-links {
+        display: none !important;
+    }
+
+    /* Show menu button */
+    .menu-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    /* Mobile dropdown */
+    #mobileMenu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 75%;
+        background: var(--bg-elevated);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        flex-direction: column;
+        z-index: 99;
+    }
+
+    #mobileMenu.show {
+        display: flex;
+    }
+
+    #mobileMenu a {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-subtle);
+        font-size: 1.05rem;
+        color: var(--text);
+    }
+
+    /* Theme inside menu */
+    .mobile-theme {
+        margin-top: 15px;
+        background: var(--accent-soft);
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        font-size: 1rem;
+    }
+
+    /* Hide desktop theme button */
+    .desktop-theme {
         display: none !important;
     }
 }
 
-/* Prevent text from being forced to center */
+/* Hide desktop menu on phone */
 @media (max-width: 800px) {
+    .nav-links {
+        display: none !important;
+    }
+    .mobile-menu-btn {
+        display: block !important;
+    }
+}
+
+/* DESKTOP NAVIGATION (Always visible) */
+.nav-toggle,
+.mobile-menu {
+    display: none;
+}
+
+
+/* Hide full navbar on mobile */
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .navbar {
+        padding: 10px 16px;
+    }
+}
+@media (max-width: 850px) {
+    .hero-card {
+        display: none !important;
+    }
+}
+@media (max-width: 850px) {
+
     .hero-text,
+    .section,
+    .about-section,
+    .projects-grid,
+    .form-section {
+        text-align: left !important;
+    }
+
     .hero-text h1,
     .hero-text h2,
     .hero-text p {
         text-align: left !important;
     }
 }
+/* HERO FIX FOR MOBILE */
+@media (max-width: 800px) {
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding-top: 20px;
+        gap: 20px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text h1,
+    .hero-text h2,
+    .hero-text p {
+        text-align: left;
+    }
+
+    /* Hide exploring card on phone */
+    .hero-card {
+        display: none !important;
+    }
+
+    /* Reduce orb sizes */
+    .hero-visual {
+        height: 180px;
+    }
+    .orb-main {
+        width: 140px;
+        height: 140px;
+    }
+    .orb-secondary {
+        width: 90px;
+        height: 90px;
+    }
+    .orb-tertiary {
+        width: 120px;
+        height: 120px;
+    }
+}
+/* Fix double menu bug */
+@media (min-width: 801px) {
+    .mobile-menu-btn,
+    .mobile-menu {
+        display: none !important;
+    }
+}
+/* HIDE BLUR ORBS ON MOBILE */
+@media (max-width: 800px) {
+    .orb,
+    .orb-main,
+    .orb-secondary,
+    .orb-tertiary {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+
+    .hero-visual {
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 800px) {
+
+    /* Text left aligned */
+    .hero-text,
+    .hero-text h1,
+    .hero-text h2,
+    .hero-text p {
+        text-align: left !important;
+    }
+
+    /* Hide exploring card */
+    .hero-card {
+        display: none !important;
+    }
+
+    /* Hide orbs */
+    .hero-visual,
+    .orb,
+    .orb-main,
+    .orb-secondary,
+    .orb-tertiary {
+        display: none !important;
+        opacity: 0 !important;
+    }
+}
+/* Hide mobile menu button on desktop */
+@media (min-width: 801px) {
+    .menu-btn {
+        display: none !important;
+    }
+}
+
