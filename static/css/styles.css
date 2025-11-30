@@ -807,6 +807,9 @@ body.light-theme .hero-text p{
         justify-content: space-between;
         align-items: center;
     }
+    .btn.primary {
+        margin-top: 2px;
+    }
 
     /* Hide desktop menu */
     .nav-links {
