@@ -1,47 +1,52 @@
-// Theme toggle (light/dark)
+// ================================
+// THEME TOGGLE (FIXED)
+// ================================
 const themeToggleBtn = document.getElementById("theme-toggle");
 const body = document.body;
 
-// Load saved theme (if any)
+// Load saved theme
 const savedTheme = localStorage.getItem("novaverse-theme");
 
 if (savedTheme === "dark") {
     body.classList.add("dark-theme");
-    themeToggleBtn.textContent = "Theme  ☀";
+    themeToggleBtn.textContent = "☀ Light";
 } else {
-    body.classList.add("light-theme");
-    themeToggleBtn.textContent = "Theme  ☾";
+    themeToggleBtn.textContent = "☾ Dark";
 }
 
 themeToggleBtn.addEventListener("click", () => {
     if (body.classList.contains("dark-theme")) {
-        // Switch to light
+        // Switch to LIGHT mode
         body.classList.remove("dark-theme");
-        body.classList.add("light-theme");
-        themeToggleBtn.textContent = "Theme  ☾";
+        themeToggleBtn.textContent = "☾ Dark";
         localStorage.setItem("novaverse-theme", "light");
     } else {
-        // Switch to dark
-        body.classList.remove("light-theme");
+        // Switch to DARK mode
         body.classList.add("dark-theme");
-        themeToggleBtn.textContent = "Theme  ☀";
+        themeToggleBtn.textContent = "☀ Light";
         localStorage.setItem("novaverse-theme", "dark");
     }
 });
 
+
+// ================================
+// IMAGE MODAL
+// ================================
 let modalImages = [];
 let currentIndex = 0;
 
 function openModal(src, list = []) {
     modalImages = list;
-    currentIndex = modalImages.indexOf(src.replace(window.location.origin + "/", ""));
-    
+    currentIndex = modalImages.indexOf(src);
+
     document.getElementById("modalImg").src = src;
     document.getElementById("imgModal").classList.add("show");
 }
+
 function closeModal() {
     document.getElementById("imgModal").classList.remove("show");
 }
+
 function nextImage(event) {
     event.stopPropagation();
     currentIndex = (currentIndex + 1) % modalImages.length;
@@ -53,16 +58,16 @@ function prevImage(event) {
     currentIndex = (currentIndex - 1 + modalImages.length) % modalImages.length;
     document.getElementById("modalImg").src = modalImages[currentIndex];
 }
-// Mobile Menu Toggle
+
+
+// ================================
+// MOBILE MENU
+// ================================
 const navToggle = document.getElementById("nav-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 
 if (navToggle) {
     navToggle.addEventListener("click", () => {
-        if (mobileMenu.style.display === "flex") {
-            mobileMenu.style.display = "none";
-        } else {
-            mobileMenu.style.display = "flex";
-        }
+        mobileMenu.classList.toggle("show");
     });
 }
