@@ -810,6 +810,9 @@ body.light-theme .hero-text p{
     .btn.primary {
         margin-top: 2px;
     }
+    .btn.ghost {
+        margin-top: 2px;
+    }
 
     /* Hide desktop menu */
     .nav-links {
