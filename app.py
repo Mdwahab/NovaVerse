@@ -201,6 +201,10 @@ def contact():
 def resume():
     return render_template("resume.html")
 
+@app.route("/certificates")
+def certificates():
+    return render_template("certificates.html")
+
 
 if __name__ == "__main__":
     # Initialize DB before first run
