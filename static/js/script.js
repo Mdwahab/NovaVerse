@@ -9,12 +9,16 @@ const mobileBtn = document.getElementById("theme-toggle-mobile");
 // Load saved theme
 const savedTheme = localStorage.getItem("novaverse-theme");
 
-if (savedTheme === "dark") {
-    body.classList.add("dark-theme");
-    setButtonsToDark();
-} else {
+// Default to Dark Mode unless "light" is explicitly saved
+if (savedTheme === "light") {
+    body.classList.remove("dark-theme");
     body.classList.add("light-theme");
     setButtonsToLight();
+} else {
+    // Default or explicitly dark
+    body.classList.remove("light-theme");
+    body.classList.add("dark-theme");
+    setButtonsToDark();
 }
 
 // Main toggle function
@@ -60,7 +64,7 @@ let currentIndex = 0;
 function openModal(src, list = []) {
     modalImages = list;
     currentIndex = modalImages.indexOf(src.replace(window.location.origin + "/", ""));
-    
+
     document.getElementById("modalImg").src = src;
     document.getElementById("imgModal").classList.add("show");
 }
@@ -86,8 +90,16 @@ function prevImage(event) {
 // MOBILE MENU
 // =====================
 
-const menu = document.getElementById("mobileMenu");
+const menuOverlay = document.getElementById("mobileMenuOverlay");
 
 function toggleMenu() {
-    menu.classList.toggle("show");
+    const isOpen = menuOverlay.classList.contains("show");
+
+    if (isOpen) {
+        menuOverlay.classList.remove("show");
+        document.body.style.overflow = ""; // Restore scrolling
+    } else {
+        menuOverlay.classList.add("show");
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
+    }
 }

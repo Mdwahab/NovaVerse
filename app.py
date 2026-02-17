@@ -12,6 +12,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
 app.secret_key = "change-this-secret-key"  # required for flash messages
+ADMIN_PASSWORD = "admin@55"
 
 DATABASE = "novaverse.db"
 
@@ -97,8 +98,24 @@ def projects():
 
 
 
+@app.route("/verify-admin", methods=["POST"])
+def verify_admin():
+    from flask import session
+    data = request.get_json()
+    password = data.get("password")
+    
+    if password == ADMIN_PASSWORD:
+        session["is_admin"] = True
+        return {"success": True}
+    return {"success": False}, 401
+
 @app.route("/projects/add", methods=["GET", "POST"])
 def add_project():
+    from flask import session
+    if not session.get("is_admin"):
+        flash("Admin access required. Please enter password.", "error")
+        return redirect(url_for("projects"))
+
     if request.method == "POST":
         title = request.form.get("title")
         description = request.form.get("description")
@@ -156,6 +173,11 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 @app.route("/projects/delete/<int:id>", methods=["POST"])
 def delete_project(id):
     """Delete a project by ID."""
+    from flask import session
+    if not session.get("is_admin"):
+        flash("Admin access required.", "error")
+        return redirect(url_for("projects"))
+
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("DELETE FROM projects WHERE id = ?;", (id,))
